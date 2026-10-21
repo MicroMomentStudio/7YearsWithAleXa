@@ -94,8 +94,10 @@ function renderLetterList() {
     <button class="letter-button" type="button" data-index="${index}">
       <span class="letter-num">${String(index + 1).padStart(2, "0")}</span>
       <span class="letter-button-copy">
-        <span class="letter-name">${escapeHTML(letter.name)}</span>
+        <span class="letter-name">From ${escapeHTML(letter.name)}</span>
         <span class="letter-year">Fan since ${escapeHTML(letter.year)}</span>
+        <span class="letter-song-label">Top 3 songs</span>
+        <span class="letter-song-list">${(letter.songs || []).filter(Boolean).map(song => escapeHTML(song)).join(" · ")}</span>
       </span>
       <span class="letter-arrow" aria-hidden="true">♡</span>
     </button>
@@ -119,13 +121,6 @@ function openFanLetter(index) {
       <button type="button" class="back-btn" id="backToLetterList">← Back to list</button>
     </div>
     <h2 class="letter-greeting">Dear ${escapeHTML(letter.address || "AleXa")},</h2>
-    <p class="letter-from">From ${escapeHTML(letter.name)}</p>
-    <div class="letter-meta">
-      <div class="meta-card"><span class="meta-label">FAN SINCE</span><span class="meta-value">${escapeHTML(letter.year)}</span></div>
-      <div class="meta-card"><span class="meta-label">TOP 3 FAVOURITE SONGS WRITTEN / PRODUCED BY ALE⚡XA</span>
-        <span class="songs">${songs.length ? songs.map(song => `<span class="song">${escapeHTML(song)}</span>`).join("") : '<span class="meta-value">Not provided</span>'}</span>
-      </div>
-    </div>
     <p class="letter-message">${escapeHTML(letter.message)}</p>
     <p class="letter-signoff">With love, ${escapeHTML(letter.name)} ♥</p>
   `;
