@@ -1,45 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111014">
-  <meta name="description" content="Seven years of AleXa, celebrated with love from her fans.">
-  <title>For AleXa ⚡ Seven Years Together</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#fff0f5">
+  <title>Happy 7th Debut Anniversary, AleXa! ⚡🎂</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-  <main class="site-shell">
-    <header class="topline"><span class="bolt">⚡</span><span>FOR ALE⚡XA, WITH LOVE</span><span class="topline-year">2019 — 2026</span></header>
-    <section class="hero" id="home">
-      <div class="anniversary-mark" aria-hidden="true"><span>7</span><i>TH</i></div>
-      <p class="eyebrow">OCTOBER 21, 2019 · OCTOBER 21, 2026</p>
-      <h1>SEVEN YEARS<br><span>OF ALE⚡XA</span></h1>
-      <p class="hero-copy">Seven years of music, courage, growth, and unforgettable memories. These are a few words from the people who are cheering you on, every step of the way.</p>
-      <button class="button button-bright" id="seeLetters">OPEN YOUR LETTERS <span aria-hidden="true">↘</span></button>
-      <div class="hero-foot"><span>MADE WITH LOVE BY SOMNIA</span><span>14 FAN LETTERS <b>✦</b></span></div>
-    </section>
-    <section class="letters-section" id="lettersSection">
-      <div class="section-heading">
-        <div><p class="eyebrow">A LITTLE LOVE, FROM ALL OVER THE WORLD</p><h2>Letters for <span>you.</span></h2></div>
-        <p class="section-note">Choose a name to open their letter.<br>Come back to the list whenever you like.</p>
-      </div>
-      <div class="letter-layout">
-        <nav class="letter-list" id="letterList" aria-label="Fan letters"></nav>
-        <article class="letter-view empty-view" id="letterView" aria-live="polite">
-          <div class="empty-symbol">✉</div><p class="eyebrow">A MESSAGE FOR YOU</p>
-          <h3>Every letter holds<br>a little piece of love.</h3>
-          <p>Select a letter from the list to read it.</p>
-        </article>
-      </div>
-    </section>
-    <footer><span>HAPPY 7TH DEBUT ANNIVERSARY, ALE⚡XA</span><span>ALWAYS ROOTING FOR YOU <b>♥</b></span></footer>
-  </main>
+  <div class="hearts-container" id="heartsContainer" aria-hidden="true"></div>
+  <div class="page-wrapper">
+    <main class="card">
+      <!-- STAGE 1: ENVELOPE -->
+      <section id="envelope-stage" class="stage active">
+        <div class="emoji" onclick="openEnvelope()" role="button" tabindex="0" aria-label="Open envelope">💌</div>
+        <p class="eyebrow">A LITTLE SURPRISE FOR YOU</p>
+        <h1>You've got letters, AleXa!</h1>
+        <p>Seven years of music, memories, and so much love. Your fans have something special to share with you.</p>
+        <button class="btn primary-btn" onclick="openEnvelope()">Open Your Envelope ✨</button>
+      </section>
+
+      <!-- STAGE 2: ANNIVERSARY CAKE AND WISH -->
+      <section id="cake-stage" class="stage hidden">
+        <div class="emoji">⚡🎂</div>
+        <p class="eyebrow">OCTOBER 21, 2019 — OCTOBER 21, 2026</p>
+        <h1 class="hb-title">Happy 7th Debut Anniversary, AleXa! 🎉</h1>
+        <p>Seven incredible years of shining in your own way. Make a wish, our star, and blow out the candles! 💗</p>
+        <button class="cake-box" id="cakeButton" onclick="blowCandle()" aria-label="Blow out the candles">
+          <span class="candle" id="candleFlame">🕯️🕯️🕯️</span>
+          <span class="cake-img">🎂</span>
+        </button>
+        <p id="cake-msg" class="hint-text">Tap the cake to make your wish ✨</p>
+      </section>
+
+      <!-- STAGE 3: GROWING GIFT -->
+      <section id="gift-stage" class="stage hidden">
+        <div class="emoji">🎀</div>
+        <h1>Your anniversary gift is waiting!</h1>
+        <p id="growth-instruction">Tap the gift to unwrap it (5 taps left)</p>
+        <button id="growingGift" class="gift-box-interactive" onclick="growGift()" aria-label="Unwrap your gift">🎁</button>
+        <p class="hint-text">A little gift, filled with a lot of love from your fans.</p>
+      </section>
+
+      <!-- STAGE 4: FAN LETTER COUPONS / INVITATION -->
+      <section id="coupons-stage" class="stage hidden">
+        <div class="emoji">💌</div>
+        <h1>A Gift Made of Words</h1>
+        <p class="subtitle">Every letter is a little reminder of how much your music means to us.</p>
+        <div class="coupon-card">
+          <h3>⚡ Seven Years, Countless Memories</h3>
+          <p><strong>13 fan letters (and counting!)</strong></p>
+          <span class="fine-print">From fans around the world, with love.</span>
+        </div>
+        <div class="coupon-card">
+          <h3>🎵 Songs That Stayed With Us</h3>
+          <p><strong>Our favourite songs, your unforgettable music.</strong></p>
+          <span class="fine-print">A few of the tracks that made this journey special.</span>
+        </div>
+        <button class="btn primary-btn" onclick="switchStages('coupons-stage', 'promise-stage')">One More Thing 💗</button>
+      </section>
+
+      <!-- STAGE 5: PINKY PROMISE -->
+      <section id="promise-stage" class="stage hidden">
+        <div class="emoji">🤝🩷</div>
+        <h1>Our Pinky Promise</h1>
+        <div class="coupon-card promise-card">
+          <h3>For AleXa, always ⚡</h3>
+          <p>We promise to keep cheering you on, celebrating your music, and wishing you happiness, good health, and kinder days. We hope you always remember how loved you are.</p>
+        </div>
+        <button class="btn primary-btn" onclick="goToFinale()">Open Your Letters 💌</button>
+      </section>
+
+      <!-- STAGE 6: FAN LETTER LIST AND LETTER VIEW -->
+      <section id="finale-stage" class="stage hidden">
+        <div class="emoji">💖⚡</div>
+        <h1>A Special Message From Your Fans</h1>
+        <p>Choose a name to open their letter. You can always come back to the list to read another.</p>
+        <div class="letters-area">
+          <div id="letter-list" class="letter-list" aria-label="Fan letters"></div>
+          <div id="letter-detail" class="letter-detail hidden" aria-live="polite"></div>
+        </div>
+        <p class="final-note">Happy 7th debut anniversary, AleXa. We’ll always be rooting for you. ❤️</p>
+      </section>
+    </main>
+    <footer class="studio-credit">
+      <span>MADE WITH LOVE FOR ALE⚡XA</span>
+      <span>2019 — 2026 · ALWAYS ROOTING FOR YOU</span>
+    </footer>
+  </div>
+
+  <script src="letters.js"></script>
+  <script src="script-birthday.js"></script>
 </body>
 </html>
