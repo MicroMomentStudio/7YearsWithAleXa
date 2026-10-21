@@ -1,119 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday to the Best Maryam! 🎂✨</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Canvas Confetti Library -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111014">
+  <meta name="description" content="Seven years of AleXa, celebrated with love from her fans.">
+  <title>For AleXa ⚡ Seven Years Together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- Falling Hearts Container -->
-    <div class="hearts-container" id="heartsContainer"></div>
-
-    <!-- Main Page Wrapper to center card and keep footer at bottom -->
-    <div class="page-wrapper">
-        <div class="card">
-            
-            <!-- STAGE 1: THE ENVELOPE -->
-            <div id="envelope-stage" class="stage active">
-                <div class="emoji" onclick="openEnvelope()">💌</div>
-                <h1>You've got a special message from Awash!</h1>
-                <p>Tap the envelope to open today's surprise...</p>
-                <button class="btn primary-btn" onclick="openEnvelope()">Open Envelope ✨</button>
-            </div>
-
-            <!-- STAGE 2: HAPPY BIRTHDAY & CAKE -->
-            <div id="cake-stage" class="stage hidden">
-                <div class="emoji">🎂</div>
-                <h1 class="hb-title">Happy Birthday To You! 🎉</h1>
-                <p>The best day of the year! Make a wish and blow out the candle...</p>
-                
-                <div class="cake-box" onclick="blowCandle()">
-                    <div class="candle" id="candleFlame">🔥🔥🔥</div>
-                    <div class="cake-img">🎂</div>
-                </div>
-                <p id="cake-msg" class="hint-text">Tap to blow out the candle</p>
-            </div>
-
-            <!-- STAGE 3: THE GROWING GIFT BOX -->
-            <div id="gift-stage" class="stage hidden">
-                <div class="emoji">˚.🎀༘⋆</div>
-                <h1>Your big gift is waiting!</h1>
-                <p id="growth-instruction">Tap the gift to open it (5 taps left)</p>
-                
-                <div id="growingGift" class="gift-box-interactive" onclick="growGift()">
-                    🎁
-                </div>
-            </div>
-
-            <!-- STAGE 4: THE COUPONS -->
-            <div id="coupons-stage" class="stage hidden">
-                <div class="emoji">🎟️</div>
-                <h1>Your Gift Coupons</h1>
-                <p class="subtitle">You deserve the world and more:</p>
-                
-                <div class="coupons-container">
-                    <div class="coupon-card">
-                        <h3>🎟️ Coupon #1</h3>
-                        <p><strong>Sweet treat on me</strong></p>
-                        <span class="fine-print">Use once, wisely and when needed • Expires in 365 days</span>
-                    </div>
-
-                    <div class="coupon-card">
-                        <h3>🎟️ Coupon #2</h3>
-                        <p><strong>3 coffee dates on me</strong></p>
-                        <span class="fine-print">Use twice, wisely and when needed • Expires in 365 days</span>
-                    </div>
-
-                    <div class="coupon-card">
-                        <h3>🎟️ Coupon #3</h3>
-                        <p><strong>Fancy dinner at your favorite spot</strong></p>
-                        <span class="fine-print">Use once, wisely and when needed • Expires in 365 days</span>
-                    </div>
-                </div>
-                <button class="btn primary-btn" onclick="switchStages('coupons-stage', 'promise-stage')">Next: Pinky Promise 🤝</button>
-            </div>
-
-            <!-- STAGE 5: THE PINKY PROMISE -->
-            <div id="promise-stage" class="stage hidden">
-                <div class="emoji">🤝🩷</div>
-                <h1>Pinky Promise</h1>
-                <div class="coupon-card promise-card">
-                    <h3>🤝 Our Pinky Promise</h3>
-                    <p>I promise you, Maryam, to take care of your health, smile a lot, and never let anything bother those pretty eyes all year long!</p>
-                </div>
-                <button class="btn primary-btn" onclick="goToFinale()">I Agree & Let's Go ✨</button>
-            </div>
-
-            <!-- STAGE 6: FINALE -->
-            <div id="finale-stage" class="stage hidden">
-                <div class="emoji">💖✨</div>
-                <h1>A Special Message & Song For You</h1>
-
-<!-- YouTube Embedded Audio/Music -->
-<div class="music-section">
-    <p>🎵 Play the song and set the vibe:</p>
-    <iframe width="100%" height="160" src="https://www.youtube.com/embed/dhdOPhTHeoE?autoplay=1&mute=1&enablejsapi=1" title="Birthday Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <p class="fine-print" style="text-align: center; margin-top: 4px;">(Click the speaker icon on the video to unmute if needed)</p>
-</div>
-
-                <!-- Message Underneath -->
-                <div class="letter-box">
-                    <p>To the dearest person, may this year bring you endless joy and all your wishes come true. Having you in my life is the greatest gift, and today we must celebrate big! May I never lose your laughter and your kind heart. Happy Birthday! 🤍✨</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- STUDIO CREDIT FOOTER -->
-        <div class="studio-credit">
-            <a href="https://instagram.com/micromoment.studio" target="_blank">Created by @micromoment.studio ✨</a>
-        </div>
-    </div>
-
-    <script src="script-birthday.js"></script>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main class="site-shell">
+    <header class="topline"><span class="bolt">⚡</span><span>FOR ALE⚡XA, WITH LOVE</span><span class="topline-year">2019 — 2026</span></header>
+    <section class="hero" id="home">
+      <div class="anniversary-mark" aria-hidden="true"><span>7</span><i>TH</i></div>
+      <p class="eyebrow">OCTOBER 21, 2019 · OCTOBER 21, 2026</p>
+      <h1>SEVEN YEARS<br><span>OF ALE⚡XA</span></h1>
+      <p class="hero-copy">Seven years of music, courage, growth, and unforgettable memories. These are a few words from the people who are cheering you on, every step of the way.</p>
+      <button class="button button-bright" id="seeLetters">OPEN YOUR LETTERS <span aria-hidden="true">↘</span></button>
+      <div class="hero-foot"><span>MADE WITH LOVE BY SOMNIA</span><span>14 FAN LETTERS <b>✦</b></span></div>
+    </section>
+    <section class="letters-section" id="lettersSection">
+      <div class="section-heading">
+        <div><p class="eyebrow">A LITTLE LOVE, FROM ALL OVER THE WORLD</p><h2>Letters for <span>you.</span></h2></div>
+        <p class="section-note">Choose a name to open their letter.<br>Come back to the list whenever you like.</p>
+      </div>
+      <div class="letter-layout">
+        <nav class="letter-list" id="letterList" aria-label="Fan letters"></nav>
+        <article class="letter-view empty-view" id="letterView" aria-live="polite">
+          <div class="empty-symbol">✉</div><p class="eyebrow">A MESSAGE FOR YOU</p>
+          <h3>Every letter holds<br>a little piece of love.</h3>
+          <p>Select a letter from the list to read it.</p>
+        </article>
+      </div>
+    </section>
+    <footer><span>HAPPY 7TH DEBUT ANNIVERSARY, ALE⚡XA</span><span>ALWAYS ROOTING FOR YOU <b>♥</b></span></footer>
+  </main>
 </body>
 </html>
